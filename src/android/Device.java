@@ -75,6 +75,7 @@ public class Device extends CordovaPlugin {
             r.put("platform", this.getPlatform());
             r.put("cordova", Device.cordovaVersion);
             r.put("model", this.getModel());
+            r.put("density", this.getDensity());
             callbackContext.success(r);
         }
         else {
@@ -162,6 +163,10 @@ public class Device extends CordovaPlugin {
             return true;
         }
         return false;
+    }
+
+    public float getDensity() {
+      return this.cordova.getActivity().getResources().getDisplayMetrics().density;
     }
 
 }
